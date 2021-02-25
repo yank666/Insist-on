@@ -1,0 +1,24 @@
+
+Item 3.
+  使容器里对象的拷贝动作轻量而正确
+  容器里存在大量的拷贝动作,(拷贝构造函数， 赋值拷贝函数)
+  当你往容器是基类对象的容器，而你试图插入派生类，那么对象被拷入容器的时候派生部分会被删除，调用派生类的虚函，表现不正确（分割现象）
+  一个使拷贝更高效、更正确的建立指针的容器（智能指针perfect）
+  
+Item 4.
+ 对于任意容器c ， 使用 
+ '''
+  use 
+   if(c.empty()) 
+  not use 
+   if (c.size() == 0)
+  '''
+  对于所有的容器，empty是个常数操作，size却不是（比如list）
+  
+  Item 5.
+  尽量使用区间成员函数代替它们的单元素兄弟
+  例如 使用a.assign(b.begin()+b.size()/2 , b.end()) 而不是for（）
+  assign 对标准序列容器都有效（vec string deque list）
+  void container::assign(InputIterator begin, InputIterator end);
+  iterator container::erase(iterator begin, iterator end);
+  void container::insert(iterator position, InputIterator begin, InputIterator end);
