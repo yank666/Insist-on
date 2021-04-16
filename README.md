@@ -1,9 +1,2 @@
-#!/bin/bash
-
-
-
-file=$1
-while read line;do
- echo ${line} | awk '{if($0 !~ /^[0-9]+$/) print $0;}' >> no_num.txt
-
-done < ${file}
+ZSH
+  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
